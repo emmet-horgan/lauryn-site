@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dr. Wees & Toes — Absolutely Legit</title>
+<style>
+  /* Very bad design choices on purpose */
+  body {
+    background: repeating-linear-gradient(45deg, #ff0, #ff0 10px, #0ff 10px, #0ff 20px);
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin: 0;
+    padding: 0;
+    color: #000;
+  }
+
+  header {
+    background: linear-gradient(90deg, magenta, orangered);
+    padding: 30px;
+    text-align: center;
+    border-bottom: 8px dashed lime;
+    box-shadow: 0 0 40px purple;
+  }
+
+  h1 {
+    font-size: 4rem;
+    margin: 0;
+    text-transform: uppercase;
+    transform: skew(-10deg);
+    letter-spacing: 6px;
+  }
+
+  .sub {
+    font-size: 1.2rem;
+    margin-top: 8px;
+    animation: wobble 1s infinite;
+  }
+
+  @keyframes wobble {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(6px) rotate(2deg); }
+    50% { transform: translateX(0) rotate(-2deg); }
+    75% { transform: translateX(-6px) rotate(2deg); }
+    100% { transform: translateX(0); }
+  }
+
+  main {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 18px;
+  }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+    border: 6px groove gold;
+    padding: 18px;
+    font-size: 1.1rem;
+  }
+
+  .sidebar {
+    background: repeating-linear-gradient(180deg, #f0f, #f0f 15px, #0f0 15px, #0f0 30px);
+    padding: 12px;
+    border: 4px dotted navy;
+    text-align: center;
+  }
+
+  .cta {
+    display:inline-block;
+    margin-top:12px;
+    padding:14px 22px;
+    border-radius: 50px;
+    background: lime;
+    color: navy;
+    font-weight: bold;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.2);
+    cursor:pointer;
+    transform: rotate(-3deg);
+  }
+
+  marquee { /* yes, really bad */
+    margin-top: 12px;
+    color: white;
+    font-weight: 800;
+  }
+
+  footer {
+    text-align:center;
+    padding: 14px;
+    background: black;
+    color: yellow;
+    border-top: 6px double red;
+  }
+
+  /* extra visual noise */
+  .blink {
+    animation: blink 700ms steps(2,start) infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .floating-blob {
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9), transparent 30%),
+                linear-gradient(45deg, cyan, magenta);
+    border-radius: 50%;
+    transform: rotate(10deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  /* intentionally terrible responsiveness */
+  @media (max-width: 700px) {
+    main { grid-template-columns: 1fr; }
+    h1 { font-size: 3rem; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Dr. Wees &amp; Toes</h1>
+    <div class="sub">Certified-ish Doctor of Wees, Toes, and Other Shiny Things</div>
+    <marquee behavior="scroll" direction="left">🔔 BOOK NOW — Strange treatments available! 🔔</marquee>
+  </header>
+
+  <main>
+    <section class="card" id="mainCard">
+      <h2 class="blink">Welcome, patient of unknown origin!</h2>
+      <p>
+        Hello. I am Dr. Wees, <em>the</em> world-renowned specialist in wees, toes, and
+        occasional eyebrows. My clinic uses 100% magical rubber bands, a pinch of optimism,
+        and a checklist labeled <strong>Definitely Scientific</strong>.
+      </p>
+
+      <p><strong>Services include:</strong></p>
+      <ul>
+        <li>Toe whispering consultations (30 min)</li>
+        <li>Wee alignment (bring slippers)</li>
+        <li>Emergency tickle therapy (24/7 when the moon is square)</li>
+      </ul>
+
+      <p>Testimonials:</p>
+      <blockquote id="testimonial">"He fixed my toes by staring at them." — A Very Real Person</blockquote>
+
+      <div>
+        <button class="cta" id="bookBtn">Book a Random Procedure</button>
+        <button class="cta" id="diagnoseBtn">Diagnose My Sock</button>
+      </div>
+
+      <p style="margin-top:12px; font-size:0.9rem; color:maroon;">
+        Disclaimer: This website is nonsense and not medical advice. But the vibes are strong.
+      </p>
+    </section>
+
+    <aside class="sidebar">
+      <h3>Office Hours</h3>
+      <p id="hours">Open when the wind changes direction.</p>
+
+      <h3>Quick Quiz</h3>
+      <p>Do you have any of the following?</p>
+      <label><input type="checkbox" id="chk1"> Too many toes</label><br>
+      <label><input type="checkbox" id="chk2"> Missing wee</label><br>
+      <label><input type="checkbox" id="chk3"> Excessive confidence</label>
+
+      <div style="margin-top:10px;">
+        <button class="cta" id="quizBtn">Check Results</button>
+      </div>
+
+      <div style="margin-top:14px;">
+        <small>Call: <strong>000-DOCTOR-WEE</strong></small>
+      </div>
+    </aside>
+  </main>
+
+  <div class="floating-blob" aria-hidden="true"></div>
+
+  <footer>
+    <div id="footerText">© 2025 Dr. Wees &amp; Toes — All rights reserved-ish</div>
+  </footer>
+
+<script>
+  // Sloppy, intentional, and silly JavaScript
+  (function(){
+    const bookBtn = document.getElementById('bookBtn');
+    const diagnoseBtn = document.getElementById('diagnoseBtn');
+    const testimonial = document.getElementById('testimonial');
+    const hours = document.getElementById('hours');
+    const footerText = document.getElementById('footerText');
+    const quizBtn = document.getElementById('quizBtn');
+
+    // Random nonsense generator
+    function nonsense() {
+      const lines = [
+        "Administer 3 rubber bands clockwise.",
+        "Only treat toes with a PhD stamp.",
+        "Apply two spoons of optimism, then scream gently.",
+        "Tell the foot a short story — it's therapeutic.",
+        "We recommend socks at all times, except Tuesdays."
+      ];
+      return lines[Math.floor(Math.random()*lines.length)];
+    }
+
+    // Horrible popup parade when booking
+    bookBtn.addEventListener('click', function(){
+      alert("Booking a Very Important Procedure...");
+      setTimeout(()=> alert("Confirming appointment with the chief toe whisperer."), 600);
+      setTimeout(()=> {
+        const note = nonsense();
+        testimonial.textContent = `"${note}" — Satisfied (probably)`;
+        document.body.style.background = "linear-gradient(90deg, #ffef00, #ff6ec7)";
+      }, 1200);
+    });
+
+    // Diagnose the sock: absurd "diagnosis" logic
+    diagnoseBtn.addEventListener('click', function(){
+      const sockAge = Math.floor(Math.random()*12) + 1;
+      const verdicts = [
+        "Severe fluffiness",
+        "Mild existential crisis",
+        "Complete transformation into a slipper",
+        "Too many holes to be curious"
+      ];
+      const v = verdicts[Math.floor(Math.random()*verdicts.length)];
+      alert(`Diagnosis: ${v}. Sock age: ${sockAge} months.`);
+      footerText.textContent = `Last sock check: ${new Date().toLocaleString()}`;
+    });
+
+    // Quiz checker: intentionally silly
+    quizBtn.addEventListener('click', function(){
+      const c1 = document.getElementById('chk1').checked;
+      const c2 = document.getElementById('chk2').checked;
+      const c3 = document.getElementById('chk3').checked;
+      let score = 0;
+      if(c1) score += 2;
+      if(c2) score += 3;
+      if(c3) score += 1;
+
+      if(score >= 4) {
+        hours.textContent = "Immediate attention required — come singing.";
+        document.getElementById('mainCard').style.borderColor = "crimson";
+      } else {
+        hours.textContent = "Please self-administer a compliment and hydrate.";
+      }
+    });
+
+    // Tiny ambient nonsense: change headline text every few seconds
+    const headings = [
+      "Licensed in 3 dimensions",
+      "Doctor of Wees & Toes",
+      "Free hugs for toes",
+      "Wee whisperer on call"
+    ];
+    let hi = 0;
+    setInterval(()=>{
+      const h = document.querySelector('header h1');
+      hi = (hi+1) % headings.length;
+      h.textContent = headings[hi];
+    }, 3000);
+
+    // Add mild keyboard chaos: pressing 'w' makes everything wobble
+    document.addEventListener('keydown', function(ev){
+      if(ev.key.toLowerCase() === 'w'){
+        document.body.classList.toggle('wiggle');
+        // ephemeral visual effect
+        document.body.style.filter = document.body.style.filter ? '' : 'hue-rotate(120deg) saturate(1.6)';
+      }
+    });
+
+    // Small accessibility nod: focus outlines everywhere
+    document.addEventListener('focusin', (e)=> e.target.style.outline = '3px dashed blue');
+    document.addEventListener('focusout', (e)=> e.target.style.outline = '');
+
+    // On load greeting
+    window.addEventListener('load', function(){
+      console.log('Dr. Wees & Toes loaded — proceed with caution.');
+      // Tiny chance to replace the disclaimer with more nonsense
+      if(Math.random() > 0.7) {
+        const p = document.createElement('p');
+        p.textContent = "PS: Bring your own rubber duck.";
+        document.querySelector('#mainCard').appendChild(p);
+      }
+    });
+
+  })();
+</script>
+</body>
+</html>
